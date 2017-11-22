@@ -19,19 +19,58 @@
 * Authored by: Liudas Drejeris <drejeris.liudas@gmail.com>
 */
 
-int main (string[] args) {
-  Gtk.init (ref args);
+public class MoviesApp : Gtk.Application {
 
-  var window = new Gtk.Window ();
-  window.title = _("Hello World!");
-  window.set_border_width (12);
-  window.set_position (Gtk.WindowPosition.CENTER);
-  window.set_default_size (350, 70);
-  window.destroy.connect (Gtk.main_quit);
+  public MoviesApp() {
+    Object(application_id: "com.github.drejerisliudas.movies", flags: ApplicationFlags.FLAGS_NONE);
+  }
 
-  window.show_all ();
+  protected override void activate() {
+    var app_window = new Gtk.ApplicationWindow(this);
 
-  Gtk.main ();
-  return 0;
+    var grid = new Gtk.Grid();
+    grid.orientation = Gtk.Orientation.VERTICAL;
+    grid.row_spacing = 6;
+
+    var title_label = new Gtk.Label(_("Notifications"));
+
+    grid.add(title_label);
+
+    var show_button = new Gtk.Button.with_label(_("Show"));
+
+    show_button.clicked.connect(() => {
+      var notification = new Notification (_("Hello World"));
+      var icon = new GLib.ThemedIcon ("dialog-warning");
+
+      notification.set_body (_("This is my first notification!"));
+      notification.set_icon (icon);
+      this.send_notification ("com.github.drejerisliudas.movies", notification);
+    });
+
+    grid.add(show_button);
+
+    var replace_button = new Gtk.Button.with_label (_("Replace"));
+
+    replace_button.clicked.connect (() => {
+      var notification = new Notification (_("Hello Again"));
+      var icon = new GLib.ThemedIcon ("dialog-warning");
+
+      notification.set_icon (icon);
+      notification.set_body (_("This is my second Notification!"));
+
+      this.send_notification ("com.github.drejerisliudas.movies", notification);
+    });
+
+    grid.add (replace_button);
+
+    app_window.add(grid);
+    app_window.show_all();
+  }
+
+  public static int main(string[] args) {
+    var app = new MoviesApp();
+
+    return app.run(args);
+  }
 }
 
