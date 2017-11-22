@@ -11,12 +11,14 @@ glib.h
 -
 glib-object.h
 -
+gtk/gtk.h
+-
+gio/gio.h
+-
+glib/gi18n-lib.h
+-
 stdlib.h
 -
 string.h
--
-gtk/gtk.h
--
-glib/gi18n-lib.h
 -
 

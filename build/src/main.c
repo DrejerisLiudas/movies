@@ -24,59 +24,236 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <glib/gi18n-lib.h>
 #include <stdlib.h>
 #include <string.h>
-#include <gtk/gtk.h>
-#include <glib/gi18n-lib.h>
 
+
+#define TYPE_MOVIES_APP (movies_app_get_type ())
+#define MOVIES_APP(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_MOVIES_APP, MoviesApp))
+#define MOVIES_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TYPE_MOVIES_APP, MoviesAppClass))
+#define IS_MOVIES_APP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_MOVIES_APP))
+#define IS_MOVIES_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_MOVIES_APP))
+#define MOVIES_APP_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TYPE_MOVIES_APP, MoviesAppClass))
+
+typedef struct _MoviesApp MoviesApp;
+typedef struct _MoviesAppClass MoviesAppClass;
+typedef struct _MoviesAppPrivate MoviesAppPrivate;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 
+struct _MoviesApp {
+	GtkApplication parent_instance;
+	MoviesAppPrivate * priv;
+};
+
+struct _MoviesAppClass {
+	GtkApplicationClass parent_class;
+};
 
 
-gint _vala_main (gchar** args, int args_length1);
-static void _gtk_main_quit_gtk_widget_destroy (GtkWidget* _sender, gpointer self);
+static gpointer movies_app_parent_class = NULL;
+
+GType movies_app_get_type (void) G_GNUC_CONST;
+enum  {
+	MOVIES_APP_0_PROPERTY
+};
+MoviesApp* movies_app_new (void);
+MoviesApp* movies_app_construct (GType object_type);
+static void movies_app_real_activate (GApplication* base);
+static void __lambda4_ (MoviesApp* self);
+static void ___lambda4__gtk_button_clicked (GtkButton* _sender, gpointer self);
+static void __lambda5_ (MoviesApp* self);
+static void ___lambda5__gtk_button_clicked (GtkButton* _sender, gpointer self);
+gint movies_app_main (gchar** args, int args_length1);
 
 
-static void _gtk_main_quit_gtk_widget_destroy (GtkWidget* _sender, gpointer self) {
-#line 30 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_main_quit ();
-#line 44 "main.c"
+MoviesApp* movies_app_construct (GType object_type) {
+	MoviesApp * self = NULL;
+#line 25 "/home/liudas/Projects/movies/src/main.vala"
+	self = (MoviesApp*) g_object_new (object_type, "application-id", "com.github.drejerisliudas.movies", "flags", G_APPLICATION_FLAGS_NONE, NULL);
+#line 24 "/home/liudas/Projects/movies/src/main.vala"
+	return self;
+#line 79 "main.c"
 }
 
 
-gint _vala_main (gchar** args, int args_length1) {
-	gint result = 0;
-	GtkWindow* window = NULL;
-	GtkWindow* _tmp0_;
-#line 23 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_init (&args_length1, &args);
-#line 25 "/home/liudas/Projects/movies/src/main.vala"
-	_tmp0_ = (GtkWindow*) gtk_window_new (GTK_WINDOW_TOPLEVEL);
-#line 25 "/home/liudas/Projects/movies/src/main.vala"
-	g_object_ref_sink (_tmp0_);
-#line 25 "/home/liudas/Projects/movies/src/main.vala"
-	window = _tmp0_;
-#line 26 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_window_set_title (window, _ ("Hello World!"));
-#line 27 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_container_set_border_width ((GtkContainer*) window, (guint) 12);
+MoviesApp* movies_app_new (void) {
+#line 24 "/home/liudas/Projects/movies/src/main.vala"
+	return movies_app_construct (TYPE_MOVIES_APP);
+#line 86 "main.c"
+}
+
+
+static void __lambda4_ (MoviesApp* self) {
+	GNotification* notification = NULL;
+	GNotification* _tmp0_;
+	GThemedIcon* icon = NULL;
+	GThemedIcon* _tmp1_;
+#line 42 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp0_ = g_notification_new (_ ("Hello World"));
+#line 42 "/home/liudas/Projects/movies/src/main.vala"
+	notification = _tmp0_;
+#line 43 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp1_ = (GThemedIcon*) g_themed_icon_new ("dialog-warning");
+#line 43 "/home/liudas/Projects/movies/src/main.vala"
+	icon = _tmp1_;
+#line 45 "/home/liudas/Projects/movies/src/main.vala"
+	g_notification_set_body (notification, _ ("This is my first notification!"));
+#line 46 "/home/liudas/Projects/movies/src/main.vala"
+	g_notification_set_icon (notification, (GIcon*) icon);
+#line 47 "/home/liudas/Projects/movies/src/main.vala"
+	g_application_send_notification ((GApplication*) self, "com.github.drejerisliudas.movies", notification);
+#line 41 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (icon);
+#line 41 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (notification);
+#line 113 "main.c"
+}
+
+
+static void ___lambda4__gtk_button_clicked (GtkButton* _sender, gpointer self) {
+#line 41 "/home/liudas/Projects/movies/src/main.vala"
+	__lambda4_ ((MoviesApp*) self);
+#line 120 "main.c"
+}
+
+
+static void __lambda5_ (MoviesApp* self) {
+	GNotification* notification = NULL;
+	GNotification* _tmp0_;
+	GThemedIcon* icon = NULL;
+	GThemedIcon* _tmp1_;
+#line 55 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp0_ = g_notification_new (_ ("Hello Again"));
+#line 55 "/home/liudas/Projects/movies/src/main.vala"
+	notification = _tmp0_;
+#line 56 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp1_ = (GThemedIcon*) g_themed_icon_new ("dialog-warning");
+#line 56 "/home/liudas/Projects/movies/src/main.vala"
+	icon = _tmp1_;
+#line 58 "/home/liudas/Projects/movies/src/main.vala"
+	g_notification_set_icon (notification, (GIcon*) icon);
+#line 59 "/home/liudas/Projects/movies/src/main.vala"
+	g_notification_set_body (notification, _ ("This is my second Notification!"));
+#line 61 "/home/liudas/Projects/movies/src/main.vala"
+	g_application_send_notification ((GApplication*) self, "com.github.drejerisliudas.movies", notification);
+#line 54 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (icon);
+#line 54 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (notification);
+#line 147 "main.c"
+}
+
+
+static void ___lambda5__gtk_button_clicked (GtkButton* _sender, gpointer self) {
+#line 54 "/home/liudas/Projects/movies/src/main.vala"
+	__lambda5_ ((MoviesApp*) self);
+#line 154 "main.c"
+}
+
+
+static void movies_app_real_activate (GApplication* base) {
+	MoviesApp * self;
+	GtkApplicationWindow* app_window = NULL;
+	GtkApplicationWindow* _tmp0_;
+	GtkGrid* grid = NULL;
+	GtkGrid* _tmp1_;
+	GtkLabel* title_label = NULL;
+	GtkLabel* _tmp2_;
+	GtkButton* show_button = NULL;
+	GtkButton* _tmp3_;
+	GtkButton* replace_button = NULL;
+	GtkButton* _tmp4_;
 #line 28 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_window_set_position (window, GTK_WIN_POS_CENTER);
+	self = (MoviesApp*) base;
 #line 29 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_window_set_default_size (window, 350, 70);
-#line 30 "/home/liudas/Projects/movies/src/main.vala"
-	g_signal_connect ((GtkWidget*) window, "destroy", (GCallback) _gtk_main_quit_gtk_widget_destroy, NULL);
+	_tmp0_ = (GtkApplicationWindow*) gtk_application_window_new ((GtkApplication*) self);
+#line 29 "/home/liudas/Projects/movies/src/main.vala"
+	g_object_ref_sink (_tmp0_);
+#line 29 "/home/liudas/Projects/movies/src/main.vala"
+	app_window = _tmp0_;
+#line 31 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp1_ = (GtkGrid*) gtk_grid_new ();
+#line 31 "/home/liudas/Projects/movies/src/main.vala"
+	g_object_ref_sink (_tmp1_);
+#line 31 "/home/liudas/Projects/movies/src/main.vala"
+	grid = _tmp1_;
 #line 32 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_widget_show_all ((GtkWidget*) window);
-#line 34 "/home/liudas/Projects/movies/src/main.vala"
-	gtk_main ();
+	gtk_orientable_set_orientation ((GtkOrientable*) grid, GTK_ORIENTATION_VERTICAL);
+#line 33 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_grid_set_row_spacing (grid, 6);
 #line 35 "/home/liudas/Projects/movies/src/main.vala"
-	result = 0;
+	_tmp2_ = (GtkLabel*) gtk_label_new (_ ("Notifications"));
 #line 35 "/home/liudas/Projects/movies/src/main.vala"
-	_g_object_unref0 (window);
+	g_object_ref_sink (_tmp2_);
 #line 35 "/home/liudas/Projects/movies/src/main.vala"
+	title_label = _tmp2_;
+#line 37 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_container_add ((GtkContainer*) grid, (GtkWidget*) title_label);
+#line 39 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp3_ = (GtkButton*) gtk_button_new_with_label (_ ("Show"));
+#line 39 "/home/liudas/Projects/movies/src/main.vala"
+	g_object_ref_sink (_tmp3_);
+#line 39 "/home/liudas/Projects/movies/src/main.vala"
+	show_button = _tmp3_;
+#line 41 "/home/liudas/Projects/movies/src/main.vala"
+	g_signal_connect_object (show_button, "clicked", (GCallback) ___lambda4__gtk_button_clicked, self, 0);
+#line 50 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_container_add ((GtkContainer*) grid, (GtkWidget*) show_button);
+#line 52 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp4_ = (GtkButton*) gtk_button_new_with_label (_ ("Replace"));
+#line 52 "/home/liudas/Projects/movies/src/main.vala"
+	g_object_ref_sink (_tmp4_);
+#line 52 "/home/liudas/Projects/movies/src/main.vala"
+	replace_button = _tmp4_;
+#line 54 "/home/liudas/Projects/movies/src/main.vala"
+	g_signal_connect_object (replace_button, "clicked", (GCallback) ___lambda5__gtk_button_clicked, self, 0);
+#line 64 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_container_add ((GtkContainer*) grid, (GtkWidget*) replace_button);
+#line 66 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_container_add ((GtkContainer*) app_window, (GtkWidget*) grid);
+#line 67 "/home/liudas/Projects/movies/src/main.vala"
+	gtk_widget_show_all ((GtkWidget*) app_window);
+#line 28 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (replace_button);
+#line 28 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (show_button);
+#line 28 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (title_label);
+#line 28 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (grid);
+#line 28 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (app_window);
+#line 230 "main.c"
+}
+
+
+gint movies_app_main (gchar** args, int args_length1) {
+	gint result = 0;
+	MoviesApp* app = NULL;
+	MoviesApp* _tmp0_;
+	gchar** _tmp1_;
+	gint _tmp1__length1;
+	gint _tmp2_;
+#line 71 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp0_ = movies_app_new ();
+#line 71 "/home/liudas/Projects/movies/src/main.vala"
+	app = _tmp0_;
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp1_ = args;
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp1__length1 = args_length1;
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
+	_tmp2_ = g_application_run ((GApplication*) app, _tmp1__length1, _tmp1_);
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
+	result = _tmp2_;
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
+	_g_object_unref0 (app);
+#line 73 "/home/liudas/Projects/movies/src/main.vala"
 	return result;
-#line 80 "main.c"
+#line 257 "main.c"
 }
 
 
@@ -84,9 +261,34 @@ int main (int argc, char ** argv) {
 #if !GLIB_CHECK_VERSION (2,35,0)
 	g_type_init ();
 #endif
+#line 70 "/home/liudas/Projects/movies/src/main.vala"
+	return movies_app_main (argv, argc);
+#line 267 "main.c"
+}
+
+
+static void movies_app_class_init (MoviesAppClass * klass) {
 #line 22 "/home/liudas/Projects/movies/src/main.vala"
-	return _vala_main (argv, argc);
-#line 90 "main.c"
+	movies_app_parent_class = g_type_class_peek_parent (klass);
+#line 22 "/home/liudas/Projects/movies/src/main.vala"
+	((GApplicationClass *) klass)->activate = (void (*) (GApplication *)) movies_app_real_activate;
+#line 276 "main.c"
+}
+
+
+static void movies_app_instance_init (MoviesApp * self) {
+}
+
+
+GType movies_app_get_type (void) {
+	static volatile gsize movies_app_type_id__volatile = 0;
+	if (g_once_init_enter (&movies_app_type_id__volatile)) {
+		static const GTypeInfo g_define_type_info = { sizeof (MoviesAppClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) movies_app_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (MoviesApp), 0, (GInstanceInitFunc) movies_app_instance_init, NULL };
+		GType movies_app_type_id;
+		movies_app_type_id = g_type_register_static (gtk_application_get_type (), "MoviesApp", &g_define_type_info, 0);
+		g_once_init_leave (&movies_app_type_id__volatile, movies_app_type_id);
+	}
+	return movies_app_type_id__volatile;
 }
 
 
