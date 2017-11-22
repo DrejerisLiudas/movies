@@ -1,0 +1,16 @@
+/home/liudas/Projects/movies/build/CMakeFiles/install.dir
+/home/liudas/Projects/movies/build/CMakeFiles/list_install_components.dir
+/home/liudas/Projects/movies/build/CMakeFiles/rebuild_cache.dir
+/home/liudas/Projects/movies/build/CMakeFiles/com.github.drejerisliudas.movies.dir
+/home/liudas/Projects/movies/build/CMakeFiles/install/strip.dir
+/home/liudas/Projects/movies/build/CMakeFiles/install/local.dir
+/home/liudas/Projects/movies/build/CMakeFiles/edit_cache.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/rebuild_cache.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/edit_cache.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/po.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/install.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/list_install_components.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/i18n.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/pot.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/install/local.dir
+/home/liudas/Projects/movies/build/po/CMakeFiles/install/strip.dir

@@ -1,11 +1,12 @@
 [Desktop Entry]
-Name=Hello World
-GenericName=Hello World App
-Comment=Proves that we can use Vala and Gtk
-Categories=Programming;
+Name=Movies
+GenericName=Movies App
+Comment=All movies in one app
+Categories=Internet;
 Exec=com.github.drejerisliudas.movies
 Icon=application-default-icon
 Terminal=false
 Type=Application
-X-GNOME-Gettext-Domain=hello-world
-Keywords=Hello;World;Example;
+X-GNOME-Gettext-Domain=movies
+Keywords=Movies;Series;Descriptions;
+

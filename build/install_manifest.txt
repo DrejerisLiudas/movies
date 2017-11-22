@@ -1,0 +1,3 @@
+/usr/bin/com.github.drejerisliudas.movies
+/usr/share/applications/com.github.drejerisliudas.movies.desktop
+/usr/share/metainfo/com.github.drejerisliudas.movies.appdata.xml

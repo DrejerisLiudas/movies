@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+1f9626074e314bea12d06bc3a83d4a80 com.github.drejerisliudas.movies_valac.stamp
+5358b888c9dcd695386b0160eb6c741e src/main.c

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 Liudas Drejeris <drejeris.liudas@gmail.com> -->
+<component type="desktop">
+  <id>com.github.drejerisliudas.movies.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <name>Movies</name>
+  <summary>All movies in one app.</summary>
+  <description>
+    <p>Read any movie description fast and easy.</p>
+  </description>
+  <custom>
+    <value key="x-appcenter-color-primary">#603461</value>
+    <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
+    <value key="x-appcenter-suggested-price">0</value>
+  </custom>
+</component>
+                                
